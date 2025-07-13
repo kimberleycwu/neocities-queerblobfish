@@ -91,6 +91,7 @@ h1 {
 }
 
 .two {
+  position: relative;
   width: 275px;
   height: 210px;
   border-style: solid;
@@ -100,6 +101,17 @@ h1 {
   border-top-right-radius: 10px; 
   background: url('image.png') center center / cover no-repeat;
   box-sizing: border-box; /* keeps the box in-column */
+}
+
+.two img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 30%;
+  max-height: 30%;
+  display: block;
+  margin: 0;
+  /* animation removed for JavaScript control */
 }
 
 .four {

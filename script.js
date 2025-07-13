@@ -83,8 +83,86 @@ async function fetchAndRenderPosts() {
   `).join('');
 }
 
-// Initialize guestbook on page load
-window.addEventListener('DOMContentLoaded', () => {
+// Pure JavaScript fish animation
+function animateFish() {
+  const fishImg = document.querySelector('.two img');
+  if (!fishImg) return;
+  
+  // Remove CSS animation
+  fishImg.style.animation = 'none';
+  
+  let currentX = 0;
+  let currentY = 0;
+  const tankWidth = 275; // .two width
+  const tankHeight = 210; // .two height
+  const fishSize = 30; // max-width/max-height percentage
+  
+  function getRandomPosition() {
+    const maxX = tankWidth - (tankWidth * fishSize / 100);
+    const maxY = tankHeight - (tankHeight * fishSize / 100);
+    
+    return {
+      x: Math.random() * maxX,
+      y: Math.random() * maxY
+    };
+  }
+  
+  function animateToPosition(targetX, targetY, onComplete) {
+    const startX = currentX;
+    const startY = currentY;
+    
+    // Calculate distance to travel
+    const distance = Math.sqrt(Math.pow(targetX - startX, 2) + Math.pow(targetY - startY, 2));
+    
+    // Constant speed: 20 pixels per second (slower)
+    const speed = 20;
+    const duration = distance / speed * 1000; // Convert to milliseconds
+    
+    const startTime = Date.now();
+    
+    // Determine if fish should face left or right
+    const isMovingRight = targetX > startX;
+    fishImg.style.transform = isMovingRight ? 'scaleX(-1)' : 'scaleX(1)';
+    
+    function updatePosition() {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Linear movement - no easing
+      currentX = startX + (targetX - startX) * progress;
+      currentY = startY + (targetY - startY) * progress;
+      
+      fishImg.style.left = currentX + 'px';
+      fishImg.style.top = currentY + 'px';
+      
+      if (progress < 1) {
+        requestAnimationFrame(updatePosition);
+      } else {
+        if (onComplete) onComplete();
+      }
+    }
+    
+    requestAnimationFrame(updatePosition);
+  }
+  
+  function startContinuousAnimation() {
+    const nextPos = getRandomPosition();
+    
+    animateToPosition(nextPos.x, nextPos.y, () => {
+      // Immediately start next movement when current one finishes
+      startContinuousAnimation();
+    });
+  }
+  
+  // Start the continuous animation
+  startContinuousAnimation();
+}
+
+// Initialize the guestbook when the page loads
+document.addEventListener('DOMContentLoaded', () => {
   renderGuestbookUI();
   fetchAndRenderPosts();
+  
+  // Start JavaScript fish animation
+  animateFish();
 });
