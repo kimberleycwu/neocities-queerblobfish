@@ -1,0 +1,45 @@
+h1, h2 {
+    font-family: "Josefin Sans";
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.one {
+  background-color: blue;
+  width: 710px;
+  height: 345px;
+}
+
+.three {
+  background-color: orange;
+  width: 710px;
+  height: 345px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.two {
+  background-color: red;
+  width: 275px;
+  height: 210px;
+}
+
+.four {
+  background-color: purple;
+  width: 275px;
+  height: 480px;
+}
