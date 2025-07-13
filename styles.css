@@ -1,5 +1,10 @@
 body {
-    background-color: #E1F16B;
+  background-color: #E1F16B;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 /* ----- TEXT STYLING ----- */
@@ -11,11 +16,11 @@ h1 {
   background-color: rgba(217, 217, 217, 0.5);
 }
 
-.leftColumn > .one > h1 {   /* 'not twitter' */
+/* .leftColumn > .one > h1 {
     margin-top: 10px;
     margin-right: 10px;
     text-align: right;
-}
+} */
 
 .rightColumn > .four > h1 {   /* 'about' */
     margin-top: 10px;
@@ -40,22 +45,36 @@ h1 {
 }
 
 .container {
-  margin: 0 auto;
   display: grid;
   grid-template-columns: auto auto;
+  grid-template-rows: auto 1fr;
   gap: 5px;
   justify-content: center;
+}
+
+.container > h1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-top: 0;
 }
 
 .leftColumn {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
 
 .one {
+  display: flex;
+  flex-direction: column;
   width: 710px;
   height: 345px;
+  position: relative;
+  overflow: hidden;
 }
 
 .three {
@@ -67,6 +86,8 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 }
 
 .two {
@@ -84,4 +105,42 @@ h1 {
 .four {
   width: 275px;
   height: 480px;
+}
+
+/* ----- GUESTBOOK LAYOUT ----- */
+.guestbook-flex {
+  display: flex;
+  height: 100%;
+}
+
+.guestbook-flex,
+.guestbook-flex * {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.guestbook-form-col {
+  flex: 0 0 220px; /* fixed width for form */
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.guestbook-posts-col {
+  flex: 1 1 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+}
+
+#posts-list-container {
+  position: absolute;
+  top: 150px; /* height of post-drafting UI */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 0 10px 10px 10px;
 }
