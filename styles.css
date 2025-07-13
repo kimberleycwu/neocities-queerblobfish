@@ -1,11 +1,50 @@
-h1, h2 {
-    font-family: "Josefin Sans";
+body {
+    background-color: #E1F16B;
+}
+
+/* ----- TEXT STYLING ----- */
+h1 {
+  font-family: "Josefin Sans";
+}
+
+.one, .two, .three, .four {
+  background-color: rgba(217, 217, 217, 0.5);
+}
+
+.leftColumn > .one > h1 {   /* 'not twitter' */
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.rightColumn > .four > h1 {   /* 'about' */
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.leftColumn > .three {   /* 'recent picks' */
+    position: relative;
+}
+.leftColumn > .three > h1 {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+}
+
+/* ----- SITE LAYOUT ----- */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: auto auto;
   gap: 5px;
+  justify-content: center;
 }
 
 .leftColumn {
@@ -15,13 +54,11 @@ h1, h2 {
 }
 
 .one {
-  background-color: blue;
   width: 710px;
   height: 345px;
 }
 
 .three {
-  background-color: orange;
   width: 710px;
   height: 345px;
 }
@@ -33,13 +70,18 @@ h1, h2 {
 }
 
 .two {
-  background-color: red;
   width: 275px;
   height: 210px;
+  border-style: solid;
+  border-color: #2d2d2d;
+  border-width: 10px 10px 30px 10px; /* top right bottom left */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; 
+  background: url('image.png') center center / cover no-repeat;
+  box-sizing: border-box; /* keeps the box in-column */
 }
 
 .four {
-  background-color: purple;
   width: 275px;
   height: 480px;
 }
