@@ -12,6 +12,11 @@ h1 {
   font-family: "Josefin Sans";
 }
 
+p {
+  font-family: "Josefin Sans";
+  text-align: center;
+}
+
 .one, .two, .three, .four {
   background-color: rgba(217, 217, 217, 0.5);
 }
@@ -32,9 +37,10 @@ h1 {
     position: relative;
 }
 .leftColumn > .three > h1 {
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  text-align: right;
 }
 
 /* ----- SITE LAYOUT ----- */
@@ -80,7 +86,19 @@ h1 {
 .three {
   width: 710px;
   height: 345px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+/* .three > div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+} */
 
 .rightColumn {
   display: flex;
@@ -94,11 +112,6 @@ h1 {
   position: relative;
   width: 275px;
   height: 210px;
-  border-style: solid;
-  border-color: #2d2d2d;
-  border-width: 10px 10px 30px 10px; /* top right bottom left */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px; 
   background: url('image.png') center center / cover no-repeat;
   box-sizing: border-box; /* keeps the box in-column */
 }
@@ -111,12 +124,25 @@ h1 {
   max-height: 30%;
   display: block;
   margin: 0;
-  /* animation removed for JavaScript control */
 }
 
 .four {
   width: 275px;
-  height: 480px;
+  height: 455px;
+}
+
+.tank-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 275px;
+  height: 230px; /* 210px + 2*10px border */
+  border: 10px solid #2d2d2d;
+  border-radius: 14px 14px 14px 14px;
+  box-sizing: border-box;
+  background: none;
+  margin-bottom: 5px;
+  position: relative;
 }
 
 /* ----- GUESTBOOK LAYOUT ----- */
